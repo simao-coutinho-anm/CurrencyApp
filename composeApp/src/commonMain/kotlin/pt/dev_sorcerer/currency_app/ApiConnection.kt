@@ -8,8 +8,7 @@ import io.ktor.client.request.headers
 import io.ktor.http.HttpHeaders
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
-import pt.dev_sorcerer.currency_app.data.Coin
-import pt.dev_sorcerer.currency_app.data.ResponseData
+import pt.dev_sorcerer.currency_app.data.model.ResponseData
 
 class ApiConnection {
 
@@ -23,7 +22,7 @@ class ApiConnection {
             }
         }
 
-        suspend fun greeting(): String {
+        suspend fun greeting(): ResponseData {
             val response : ResponseData = client.get("https://api.currencyapi.com/v3/latest") {
                 headers {
                     append(HttpHeaders.Accept, "application/json")
@@ -31,7 +30,7 @@ class ApiConnection {
                 }
             }.body()
 
-            return response.toString()
+            return response
         }
     }
 

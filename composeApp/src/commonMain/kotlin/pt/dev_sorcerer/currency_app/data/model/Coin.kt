@@ -1,4 +1,4 @@
-package pt.dev_sorcerer.currency_app.data
+package pt.dev_sorcerer.currency_app.data.model
 
 import kotlinx.serialization.Serializable
 
