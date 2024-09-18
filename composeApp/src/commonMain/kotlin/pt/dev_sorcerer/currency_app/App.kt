@@ -29,10 +29,13 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import kotlinx.datetime.Instant
 import org.jetbrains.compose.resources.painterResource
+import pt.dev_sorcerer.currency_app.data.model.di.startDI
 
 @Composable
 @Preview
 fun App() {
+    startDI()
+
     var progress by remember { mutableStateOf(false) }
     var amount by remember { mutableStateOf(1.00f) }
     var calculatedAmount by remember { mutableStateOf(1.00f) }
@@ -47,20 +50,7 @@ fun App() {
         )
     }
 
-    /*val now = Clock.System.now().toEpochMilliseconds()
-    val difference = now - lastUpdatedDate
-    if (difference > (1000 * 60 * 60 * 24)) {
-        progress = true
-        LaunchedEffect(true) {
-            val response = ApiConnection.greeting()
 
-            val serverLastUpdatedDate = Instant.parse(response.meta.lastUpdatedAt).toEpochMilliseconds()
-            settings.putLong("lastUpdatedDate", serverLastUpdatedDate)
-            greeting = response.meta.lastUpdatedAt
-
-            progress = false
-        }
-    }*/
 
 
     MaterialTheme {
