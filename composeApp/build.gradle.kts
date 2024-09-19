@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     id("org.jetbrains.kotlin.plugin.serialization") version "2.0.20"
+    alias(libs.plugins.realm)
 }
 
 kotlin {
@@ -60,6 +61,9 @@ kotlin {
             implementation(libs.koin.compose.viewmodel.navigation)
             implementation(libs.koin.test)
             implementation(libs.kotlinx.datetime)
+            implementation(libs.library.base)
+            implementation(libs.library.sync)
+            implementation(libs.kotlinx.coroutines.core.v170)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)

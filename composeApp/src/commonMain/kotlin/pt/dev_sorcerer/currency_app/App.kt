@@ -44,6 +44,7 @@ fun App(viewModel : AppViewModel = koinInject()) {
 
 
     var greeting by remember { mutableStateOf(viewModel.getLastUpdatedDate()) }
+    var coins by remember { mutableStateOf(viewModel.getCoins()) }
 
 
     MaterialTheme {
