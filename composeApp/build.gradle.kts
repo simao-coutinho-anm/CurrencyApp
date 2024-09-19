@@ -55,6 +55,9 @@ kotlin {
             implementation(libs.multiplatform.settings.no.arg)
             implementation(libs.voyager.screenmodel)
             implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+            implementation(libs.koin.compose.viewmodel.navigation)
             implementation(libs.koin.test)
             implementation(libs.kotlinx.datetime)
         }

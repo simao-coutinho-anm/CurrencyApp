@@ -29,28 +29,21 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import kotlinx.datetime.Instant
 import org.jetbrains.compose.resources.painterResource
+import org.koin.compose.koinInject
+import org.koin.compose.viewmodel.koinViewModel
 import pt.dev_sorcerer.currency_app.data.model.di.startDI
+import pt.dev_sorcerer.currency_app.data.model.local.AppPreferences
+import pt.dev_sorcerer.currency_app.presentation.AppViewModel
 
 @Composable
 @Preview
-fun App() {
-    startDI()
-
+fun App(viewModel : AppViewModel = koinInject()) {
     var progress by remember { mutableStateOf(false) }
     var amount by remember { mutableStateOf(1.00f) }
     var calculatedAmount by remember { mutableStateOf(1.00f) }
 
 
-    val settings = Settings()
-    val lastUpdatedDate = settings.getLong("lastUpdatedDate", -1)
-
-    var greeting by remember {
-        mutableStateOf(
-            Instant.fromEpochMilliseconds(lastUpdatedDate).toString()
-        )
-    }
-
-
+    var greeting by remember { mutableStateOf(viewModel.getLastUpdatedDate()) }
 
 
     MaterialTheme {
@@ -61,7 +54,10 @@ fun App() {
         }
 
 
-        Column(Modifier.fillMaxWidth().padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            Modifier.fillMaxWidth().padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Row(modifier = Modifier.fillMaxWidth()) {
                 Button(onClick = {
 
@@ -82,13 +78,15 @@ fun App() {
                     })
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             Button(onClick = {
 
             }) {
                 //Image(painter = painterResource(Res.drawable.ic_currency_exchange), contentDescription = null)
             }
+
+            Spacer(modifier = Modifier.height(8.dp))
 
             Row(modifier = Modifier.fillMaxWidth()) {
                 Button(onClick = {

@@ -34,4 +34,8 @@ class AppViewModel (
             }
         }
     }
+
+    fun getLastUpdatedDate(): String {
+        return appPreferences.getFormatedLastUpdatedDate()
+    }
 }

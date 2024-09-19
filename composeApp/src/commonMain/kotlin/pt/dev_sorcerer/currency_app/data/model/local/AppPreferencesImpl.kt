@@ -10,6 +10,12 @@ class AppPreferencesImpl(
     override fun getLastUpdatedDate() =
         settings.getLong("lastUpdatedDate", -1)
 
+    override fun getFormatedLastUpdatedDate(): String {
+        val lastUpdatedDate = settings.getLong("lastUpdatedDate", -1)
+
+        return Instant.fromEpochMilliseconds(lastUpdatedDate).toString()
+    }
+
 
     override fun setLastUpdatedDate(date: String) {
         val value = Instant.parse(date).toEpochMilliseconds()
